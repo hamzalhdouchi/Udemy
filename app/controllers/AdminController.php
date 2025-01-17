@@ -8,5 +8,13 @@ class Admin extends Person {
     parent::__construct();
     $this->role = $role;
 }
+public function deletuser($id){
+    $query = "DELETE FROM utilisateurs WHERE id = :id";
+    $stmt = $this->connect->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    if ($stmt->execute()) {
+        return "Utilisateur supprimé avec succès !";
+    }
+}
 
 }
