@@ -19,5 +19,12 @@ class Database
         echo 'Erreur de connexion : ' . $e->getMessage();
     }
 }
+public static function getInstance()
+{
+    if (self::$instance === null) {
+        self::$instance = new Database();
+    }
+    return self::$instance;
+}
 
 }
